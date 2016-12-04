@@ -2,7 +2,9 @@
 
 	<ul id="articles">
 		<% @articles.each do |article| %>
-		<li><%= link_to article.title, article_path(article), class: 'article_title', id: "article_#{article.id}" %></li>
+		<li><%= link_to article.title, article_path(article), class: 'article_title', id: "article_#{article.id}" %>
+			<%= link_to 'Delete Article', article_path(article), data: {confirm: "Really delete the Article?"}, method: :delete %>
+		</li>
 		<% end %>
 	</ul>
 <br>
