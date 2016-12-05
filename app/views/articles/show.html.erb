@@ -3,5 +3,8 @@
 <%= @article.body %>
 </div>
 <br>
+<%= render partial: 'comments/form' %>
 <%= link_to "Edit Article", edit_article_path %>
 <%= link_to "Back to Articles list", articles_path %>
+<h3>Comments (<%= @article.comments.size %>)</h3>
+<%= render partial: 'articles/comment', collection: @article.comments %>
