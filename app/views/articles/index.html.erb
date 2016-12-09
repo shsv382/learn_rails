@@ -6,9 +6,13 @@
 		<% if article.image.exists? %>
       		<%= image_tag article.image.url(:thumb) %><br/>
   		<% end %>
+			<% if logged_in? %>
 			<%= link_to 'Delete Article', article_path(article), data: {confirm: "Really delete the Article?"}, method: :delete %>
+			<% end %>
 		</li>
 		<% end %>
 	</ul>
 <br>
+	<% if logged_in? %>
 	<%= link_to "Create a new article", new_article_path, class: 'new_article' %>
+	<% end %>
