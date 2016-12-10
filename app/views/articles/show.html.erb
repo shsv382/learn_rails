@@ -6,6 +6,7 @@
 <i>Unknown Author</i>
 <% end %>
 </h5>
+<h5><%= @article.view_counts %> Viewes</h5>
 <p>Tags:
 <% @article.tags.each do |tag| %>
 <%= link_to tag.name, tag_path(tag) %>

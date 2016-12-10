@@ -23,6 +23,14 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 		@comment = Comment.new
 		@comment.article_id = @article.id
+		if @article.view_counts == nil
+			@article.view_counts = 1
+			@article.save
+		else
+			@article.view_counts = @article.view_counts + 1
+			@article.save
+		end
+
 	end
 
 	def destroy
@@ -49,5 +57,5 @@ class ArticlesController < ApplicationController
 	def article_params
 		params.require(:article).permit(:title, :body, :tag_list, :image)
 	end
-	
+
 end
