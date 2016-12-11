@@ -1,0 +1,26 @@
+<h1>Popular Articles</h1>
+
+	<% a = @articles.sort_by { |article| article.view_counts } %>
+	<% a.reverse! %>
+	<% arts = a.first(3) %>
+
+	<ul id="articles">
+		<% arts.each do |article| %>
+		<li>
+		<%= link_to article.title, article_path(article), class: 'article_title', id: "article_#{article.id}" %>
+			<% if article.image.exists? %>
+      			<%= image_tag article.image.url(:thumb) %><br/>
+  			<% end %>
+  		viewed <%= article.view_counts %> times<br />
+			<% if logged_in? && current_user.id == article.author_id %>
+				
+			<%= link_to 'Delete Article', article_path(article), data: {confirm: "Really delete the Article?"}, method: :delete %>
+			
+			<% end %>
+		</li>
+		<% end %>
+	</ul>
+<br>
+	<% if logged_in? %>
+	<%= link_to "Create a new article", new_article_path, class: 'new_article' %>
+	<% end %>

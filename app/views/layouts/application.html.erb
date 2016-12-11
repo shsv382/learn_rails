@@ -18,14 +18,28 @@
       </div>
   </div>
       <hr>
-      <h6>
+      
+<div class="nav_bar">
+    <ul>
+    <span class="lft2">
+    <li><b>
         <% if logged_in? %>
           <%= "Logged in as #{current_user.email}" %>
           <%= link_to "(logout)", logout_path %>
         <% else %>
           <%= link_to "(login)", login_path %>
         <% end %>
-      </h6>
-    
+      </b>
+      </li>
+    <li><%= link_to "Popular", popular_path %></li>
+    </span>
+    <span class="lft">
+    <li><%= link_to "Authors", authors_path %></li>
+    <li><%= link_to "Articles", articles_path %></li>
+    <li><%= link_to "Tags", tags_path %></li>
+    </span>
+    </ul>
+</div>
+    </body>
 
 </html>
